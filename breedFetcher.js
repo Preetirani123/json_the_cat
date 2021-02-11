@@ -8,7 +8,11 @@ let urlNeeded = "https://api.thecatapi.com/v1/breeds/search?q=" + catName
 
 request(urlNeeded, (error, response, body) => {
 
-  if (typeof(response) != 'undefined') {
+  if (error) {
+    console.log(error)
+  }
+
+  else {
     const data = JSON.parse(body);
      
     if (typeof(data[0]) != 'undefined') {
@@ -16,9 +20,7 @@ request(urlNeeded, (error, response, body) => {
     } else {
       console.log('Breed Not Found')
     }
-  } else {
-    console.log(error)
-  }
+  } 
 
  
 
